@@ -21,8 +21,8 @@ var getSign = function(id) {
 };
 
 var saveSign = function(sign) {
-	sign.id = sign.id || require("crypto").randomBytes(10).toString("hex");
-	sign._id = sign.id;
+	sign._id = sign._id || require("crypto").randomBytes(10).toString("hex");
+	sign.id = sign._id;
 	return records.save(sign);
 };
 
@@ -74,4 +74,4 @@ app.route('/sign/:id/image')
 
 	})
 
-app.listen(1277);
+app.listen(process.env.PORT || 1277);

@@ -113,20 +113,27 @@ body {
   line-height: 1.3em;
 }
 
-.sign .inner p.big
+.sign .inner p.SM
 {
-  font-size: 2.2em;
+  font-size: 1em;
 }
 
-.sign .inner p.xbig
+.sign .inner p.MD
+{
+  font-size: 2em;
+}
+
+.sign .inner p.LG
 {
   font-size: 3em;
 }
 
-.sign .inner p.small
+.sign .inner p.XL
 {
-  font-size: .6em;
+  font-size: 4em;
 }
+
+
 
 .arrow
 {
@@ -207,4 +214,8 @@ p.big > .fa-arrow-down {
   -webkit-transform: rotate(45deg);
   -ms-transform:     rotate(45deg);
   -o-transform:      rotate(45deg);
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

@@ -37,9 +37,17 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 		line.appendRight = $scope.icons[index];
 	}
 
+	$scope.sizes = ['SM','MD','LG','XL'];
+	$scope.setSize = function(line) {
+		var index = _.indexOf($scope.sizes, line.size || '');
+		index++;	
+		index = index > $scope.sizes.length - 1 ? 0 : index;
+		line.size = $scope.sizes[index];
+	}
+
 	$scope.save = function() {
 		signService.save($scope.sign).then(function(resp) {
-			$location.path(resp.data.id)
+			$location.path(resp.data._id)
 		})
 	};
 })
@@ -54,13 +62,24 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 			deferred.resolve(sign); 
 		} else {
 			$http.get("/sign/" + id).then(function(resp) {
-				sign.id = resp.data.id;
+				sign._id = resp.data._id;
 				sign.color = resp.data.color;
 				sign.clearLines();
 
 				if(resp.data.lines)
 				{
 					resp.data.lines.forEach(function(line) {
+						//map old sizes to new sizes
+						var sizes = {
+							'small': 'SM',
+							'big': 'MD',
+							'xbig': 'LG'
+						};
+						var size = sizes[line.size];
+						if(size)
+						{
+							line.size = size;
+						}
 						sign.lines.push(line);
 					})
 				}
@@ -73,9 +92,9 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 	};
 
 	self.save = function(sign) {
-		if(sign.id)
+		if(sign._id)
 		{
-			return $http.put('/sign/' + sign.id, sign);
+			return $http.put('/sign/' + sign._id, sign);
 		} else {
 			return $http.post('/sign/', sign);
 		}
@@ -93,7 +112,7 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 			addLine: function(text,size) {
 				size = lines.length > 0 ? lines[lines.length-1].size : size;
 				text = text || lines.length > 0 ? '' : 'ENTER TEXT';
-				lines.push({text: text, size: size||'big', appendRight: '', appendLeft: ''})
+				lines.push({text: text, size: size||'LG', appendRight: '', appendLeft: ''})
 			},
 			clearLines: function() {
 				lines.splice(0,lines.length);

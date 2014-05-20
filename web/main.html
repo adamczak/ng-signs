@@ -29,7 +29,7 @@
   <form class="form form-inline">
     <div ng-repeat="line in sign.lines" style="margin-bottom:10px;">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12" style="text-align:center;">
          <button class="btn btn-default btn-lg " type="button" ng-click="appendLeft(line)">
           <i ng-repeat="icon in icons" ng-show="line.appendLeft === icon" class="{{icon}}">
             <span ng-if="icon === ''">&#160;&#160;&#160;</span>
@@ -41,33 +41,26 @@
             <span ng-if="icon === ''">&#160;&#160;&#160;</span>
           </i>
         </button>
-      </div>
-      <div class="col-md-6">
-        <div class="btn-group">
-          <button class="btn btn-default btn-lg" type="button" ng-click="line.size = 'medium'">SM</button>
-          <button class="btn btn-default btn-lg" type="button" ng-click="line.size = 'big'">MD</button>
-          <button class="btn btn-default btn-lg" type="button" ng-click="line.size = 'xbig'">LG</button>
-        </div>
-        <div class="btn-group">
-          <button class="btn btn-danger btn-lg" type="button" ng-click="sign.lines.splice($index,1)"><i class='glyphicon glyphicon-trash'></i></button>
-        </div>
-
+        <button class="btn btn-default btn-lg" type="button" ng-click="setSize(line)">
+        <span ng-repeat="size in sizes" ng-show="line.size === size">
+          {{size}}
+        </span>
+        </button>
+        <button class="btn btn-danger btn-lg" type="button" ng-click="sign.lines.splice($index,1)"><i class='glyphicon glyphicon-trash'></i></button>
       </div>
     </div>
   </div>
 </form>
 <div class="row" style="margin-top:10px;">
-  <div class="col-md-6">
-    <button class="btn btn-primary btn-lg btn-block" ng-click="sign.addLine('')">Add a Line</button>
-  </div>
-  <div class="col-md-6">
+  <div class="col-md-12" style="text-align:center;">
+    <button class="btn btn-primary btn-lg" ng-click="sign.addLine('')">Add a Line</button>
     <button class="btn btn-primary btn-lg" ng-click="save()">Save</button>
     <div class="btn-group">
       <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown">
         Download <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a ng-href="/sign/{{sign.id}}/image">Image</a></li>
+        <li><a ng-href="/sign/{{sign._id}}/image">Image</a></li>
       </ul>
     </div>
     <a href="#/" class="btn btn-success btn-lg">New</a>

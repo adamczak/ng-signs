@@ -12,6 +12,6 @@
     "express": "~4.2.0",
     "phantomjs": "~1.9.7-5",
     "q": "~1.0.1",
-    "body-parser": "~1.2.0"
+    "body-parser": "~1.2.0",
   }
 }

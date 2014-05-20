@@ -1,11 +1,6 @@
 <div class="sign {{sign.color}}">
 	<div class="inner">
 		<line ng-model="line" ng-repeat="line in sign.lines"></line>
-		<!-- <p class="{{line.size}}" ng-repeat="line in sign.lines" >
-			<i class="{{line.appendLeft}}" ng-show="line.appendLeft && line.appendLeft !== ''"></i>
-			<span ng-bind-html="line.text|emptyLine"></span>
-			<i class="{{line.appendRight}}" ng-show="line.appendRight && line.appendRight !== ''"></i>
-		</p> -->
 		<p class="big" ng-if="!sign.lines || sign.lines.length === 0">
 			Sad sign has no lines :-(
 		</p>
