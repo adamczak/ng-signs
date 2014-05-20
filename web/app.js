@@ -59,6 +59,9 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 		var deferred = $q.defer();
 		var sign = new Sign();
 		if(!id) { 
+			sign.addLine("ALL YOUR BASE","MD");
+			sign.addLine("ARE BELONG","MD");
+			sign.addLine("TO US","MD");
 			deferred.resolve(sign); 
 		} else {
 			$http.get("/sign/" + id).then(function(resp) {
@@ -107,11 +110,14 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 	var Sign = function() {
 		lines = [];
 		return {
-			color: 'blue',
+			color: 'green',
 			lines: lines,
 			addLine: function(text,size) {
 				size = lines.length > 0 ? lines[lines.length-1].size : size;
-				text = text || lines.length > 0 ? '' : 'ENTER TEXT';
+				if(lines.length === 0 && !text || text === '')
+				{
+					text = 'ENTER TEXT';
+				}
 				lines.push({text: text, size: size||'LG', appendRight: '', appendLeft: ''})
 			},
 			clearLines: function() {

@@ -19,6 +19,6 @@ Clone this
 
 `cd web && bower install`
 
-`nodemon` or `node server.js`
+`nodemon server.js` or `node server.js`
 
 Open `localhost:1277` in a (modern) browser.
