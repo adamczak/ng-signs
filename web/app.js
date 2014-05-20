@@ -17,7 +17,7 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
   	.otherwise({ redirectTo: '/' });
 })
 
-.controller("Main", function($scope,$routeParams,$location,signService) {
+.controller("Main", function($scope,$routeParams,$location,signService,Sign) {
 	signService.getSign($routeParams.signId).then(function(resp) {
 		$scope.sign = resp;
 	});
@@ -50,6 +50,11 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 			$location.path(resp.data._id)
 		})
 	};
+
+	$scope.new = function() {
+		$scope.sign = new Sign();
+		$scope.sign.addLine("");
+	}
 })
 
 .service("signService", function($http,$q,Sign) {
@@ -114,11 +119,11 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 			lines: lines,
 			addLine: function(text,size) {
 				size = lines.length > 0 ? lines[lines.length-1].size : size;
-				if(lines.length === 0 && !text || text === '')
+				if(lines.length === 0 && (!text || text === ''))
 				{
 					text = 'ENTER TEXT';
 				}
-				lines.push({text: text, size: size||'LG', appendRight: '', appendLeft: ''})
+				lines.push({text: text, size: size||'MD', appendRight: '', appendLeft: ''})
 			},
 			clearLines: function() {
 				lines.splice(0,lines.length);

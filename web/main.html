@@ -56,14 +56,14 @@
     <button class="btn btn-primary btn-lg" ng-click="sign.addLine('')">Add a Line</button>
     <button class="btn btn-primary btn-lg" ng-click="save()">Save</button>
     <div class="btn-group">
-      <button type="button" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" ng-show="sign._id" class="btn btn-lg btn-primary dropdown-toggle" data-toggle="dropdown">
         Download <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a ng-href="/sign/{{sign._id}}/image">Image</a></li>
       </ul>
     </div>
-    <a href="#/" class="btn btn-success btn-lg">New</a>
+    <a href="" ng-click="new()" class="btn btn-success btn-lg">New</a>
   </div>
 </div>
 </div>
