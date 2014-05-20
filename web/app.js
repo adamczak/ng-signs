@@ -136,10 +136,6 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 		scope: {
 			sign: "=ngModel"
 		},
-		link: function(scope,element,attr)
-		{
-
-		},
 		templateUrl:'sign.html'
 	}
 })
@@ -147,16 +143,9 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 .directive("line", function() {
 	return {
 		restrict: "E",
+		require: "ngModel",
 		scope: {
 			line: "=ngModel"
-		},
-		link: function(scope,element,attr)
-		{
-			// scope.$watch('line.text', function(newVal,oldVal) {
-			// 	if(newVal === '') {
-			// 		scope.line.text = 'ENTER TEXT';
-			// 	}
-			// });
 		},
 		templateUrl: 'line.html'
 	}
@@ -164,9 +153,6 @@ var app = angular.module("app",['ngSanitize','ngRoute'])
 
 .filter("htmlSpaces", function() {
 	return function(val) {
-		// if(val.length === 0) { 
-		// 	val = ' '; 
-		// }
 		return val.replace(/\s/g, '&#160;');
 	}
 })
