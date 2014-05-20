@@ -18,7 +18,8 @@
 </head>
 
 <body ng-controller="Main">
-  <div class="container">
+<div id="wrapper">
+  <div class="container ">
     <div class="row">
       <div class="col-md-9">
 
@@ -28,12 +29,13 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid ng-cloak">
+  <div class="container-fluid ng-cloak" id="content">
     <ng-view></ng-view>
-    <div class="footer">
-      Created by <a href="https://twitter.com/adamczak" target="_blank">@adamczak</a>
-    </div>
   </div>
+   <div id="footer">
+      Created by <a href="https://twitter.com/adamczak" target="_blank">@adamczak</a> for no particularly good reason. 
+    </div>
+</div>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="app.js"></script>
     <script>
