@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "homepage": "na",
+  "authors": [
+    "Brian <adamczak@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "~1.2.16",
+    "angular-mocks": "~1.2.16",
+    "angular-route": "~1.2.16",
+    "angular-sanitize": "~1.2.16"
+  }
+}
