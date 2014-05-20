@@ -35,6 +35,10 @@ html,body {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .controls a {
   text-decoration: none;
   height: 25px;
